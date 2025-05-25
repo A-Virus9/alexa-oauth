@@ -57,5 +57,11 @@ app.post('/token/validate', (req, res) => {
     }
 });
 
+// Start the server for local testing
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
+
 // Export the app as a serverless function
 module.exports = app;
