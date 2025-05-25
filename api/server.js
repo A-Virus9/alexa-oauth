@@ -16,7 +16,7 @@ const HOST = process.env.HOST || `http://localhost:${PORT}`;
 
 // Dummy client credentials (replace with your actual client info)
 const CLIENTS = {
-  'testclient': 'testsecret'
+  'alexa-button-skill': 'secret'
 };
 
 let tokens = {}; // Store tokens by code
