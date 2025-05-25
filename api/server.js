@@ -4,6 +4,10 @@ const app = express();
 
 let tokens = {};
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Generate tokens
 app.get('/auth', (req, res) => {
     const clientId = req.query.client_id;
@@ -36,7 +40,7 @@ app.post('/token', (req, res) => {
 });
 
 // Token Validation (Alexa calls this)
-app.post('/token', (req, res) => {
+app.post('/token/validate', (req, res) => {
     const grantType = req.body.grant_type;
     const code = req.body.code;
     const clientId = req.body.client_id;
@@ -53,4 +57,5 @@ app.post('/token', (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('OAuth2 server running on port 3000'));
+// Export the app as a serverless function
+module.exports = app;
