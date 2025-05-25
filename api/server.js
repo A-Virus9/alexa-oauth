@@ -36,7 +36,7 @@ app.get('/auth', (req, res) => {
   }
 
   // Redirect user to login page with client info and state preserved
-  const loginUrl = new URL(HOST + '/login');
+  const loginUrl = new URL('alexa-oauth.vercel.app' + '/login');
   loginUrl.searchParams.append('client_id', client_id);
   loginUrl.searchParams.append('redirect_uri', redirect_uri);
   if(state) loginUrl.searchParams.append('state', state);
